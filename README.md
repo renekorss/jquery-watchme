@@ -7,23 +7,23 @@ Options
 ==============
 
 ```JavaScript
-	// Image default state
-	defaultState	: 'straight',
+// Image default state
+defaultState	: 'straight',
 
-	// Speed of fade in ms
-	fadeSpeed		: 200,
+// Speed of fade in ms
+fadeSpeed		: 200,
 
-	// Timeout before fade in ms
-	timeout 		: 300,
+// Timeout before fade in ms
+timeout 		: 300,
 
-	// Image elements
-	imageSelector	: "img",
+// Image elements
+imageSelector	: "img",
 
-	// Do we want hover to be different image?
-	hoverImg		: false,
+// Do we want hover to be different image?
+hoverImg		: false,
 
-	// Do we want to add direction classes to images?
-	addClasses 		: false,
+// Do we want to add direction classes to images?
+addClasses 		: false,
 ```
 
 Usage
