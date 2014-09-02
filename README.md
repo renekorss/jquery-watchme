@@ -35,19 +35,19 @@ $('#watchMe').watchMe();
 ```
 
 ```HTML
-	// Add data attributes to every image
-	<img src="http://placehold.it/150x150&text=look straight" width="150" height="150"
-        data-watchme-direction-straight="http://placehold.it/150x150&text=look straight"
-        data-watchme-direction-straighthover="http://placehold.it/150x150&text=look straight hover"
-        data-watchme-direction-up="http://placehold.it/150x150&text=look up"
-        data-watchme-direction-upright="http://placehold.it/150x150&text=look upright"
-        data-watchme-direction-right="http://placehold.it/150x150&text=look right"
-        data-watchme-direction-downright="http://placehold.it/150x150&text=look downright"
-        data-watchme-direction-down="http://placehold.it/150x150&text=look down"
-        data-watchme-direction-downleft="http://placehold.it/150x150&text=look downleft"
-        data-watchme-direction-left="http://placehold.it/150x150&text=look left"
-        data-watchme-direction-upleft="http://placehold.it/150x150&text=look upleft"
-    />
+// Add data attributes to every image
+<img src="http://placehold.it/150x150&text=look straight" width="150" height="150"
+    data-watchme-direction-straight="http://placehold.it/150x150&text=look straight"
+    data-watchme-direction-straighthover="http://placehold.it/150x150&text=look straight hover"
+    data-watchme-direction-up="http://placehold.it/150x150&text=look up"
+    data-watchme-direction-upright="http://placehold.it/150x150&text=look upright"
+    data-watchme-direction-right="http://placehold.it/150x150&text=look right"
+    data-watchme-direction-downright="http://placehold.it/150x150&text=look downright"
+    data-watchme-direction-down="http://placehold.it/150x150&text=look down"
+    data-watchme-direction-downleft="http://placehold.it/150x150&text=look downleft"
+    data-watchme-direction-left="http://placehold.it/150x150&text=look left"
+    data-watchme-direction-upleft="http://placehold.it/150x150&text=look upleft"
+/>
 ```
 
 Directions (10)
