@@ -74,6 +74,10 @@ Demo
 
 See demo on [jsFiddle](http://jsfiddle.net/ReneKorss/2b2y3yez/).
 
+Contribute
+=================
+Fork us or create issue.
+
 License
 =================
 PHPExcelFormatter is licensed under [MIT](LICENSE)
