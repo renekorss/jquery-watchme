@@ -26,6 +26,11 @@ hoverImg		: false,
 addClasses 		: false,
 ```
 
+Bower
+==============
+
+    bower install jquery-watchme
+
 Usage
 ==============
 
@@ -53,15 +58,15 @@ $('#watchMe').watchMe();
 Directions (10)
 ==============
 
-*   Straight (data-watchme-direction-[defaultState])
-*   Straight hover (data-watchme-direction-[defaultState]hover) (Requires option "hoverImg" to be true)
-*   Up (data-watchme-direction-up)
-* 	Down (data-watchme-direction-down)
+* Straight (data-watchme-direction-[defaultState])
+* Straight hover (data-watchme-direction-[defaultState]hover) (Requires option "hoverImg" to be true)
+* Up (data-watchme-direction-up)
+* Down (data-watchme-direction-down)
 *	Left (data-watchme-direction-left)
 *	Right (data-watchme-direction-right)
-* 	Down left (data-watchme-direction-downleft)
+* Down left (data-watchme-direction-downleft)
 *	Down right (data-watchme-direction-downright)
-* 	Up left (data-watchme-direction-upleft)
+* Up left (data-watchme-direction-upleft)
 *	Up right (data-watchme-direction-upright)
 
 Demo

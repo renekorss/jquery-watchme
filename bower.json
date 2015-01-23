@@ -1,0 +1,25 @@
+{
+  "name": "jQuery watchMe",
+  "version": "1.0.0",
+  "homepage": "https://github.com/renekorss/jquery-watchme",
+  "authors": [
+    "Rene Korss <rene.korss@gmail.com>"
+  ],
+  "description": "A jQuery plugin to manipulate image sources depending on hovered image position",
+  "main": "./src/jQuery.watchMe.js",
+  "keywords": [
+    "jquery",
+    "images",
+    "image",
+    "source",
+    "manipulation"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
