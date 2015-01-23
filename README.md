@@ -73,3 +73,7 @@ Demo
 ==============
 
 See demo on [jsFiddle](http://jsfiddle.net/ReneKorss/2b2y3yez/).
+
+License
+=================
+PHPExcelFormatter is licensed under [MIT](LICENSE)

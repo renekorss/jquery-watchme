@@ -1,244 +1,244 @@
 /*
- *  jQuery watchMe - v0.9.0
- *  A plugin to manipulate image sources depending on hovered image position
- *  https://www.linkedin.com/in/renekorss
+ * jQuery watchMe
+ * A plugin to manipulate image sources depending on hovered image position
  *
- *  Made by Rene Korss
- *  Under MIT License
+ * @copyright  Copyright (c) 2015 jQuery watchMe (https://github.com/renekorss/jquery-watchme)
+ * @license    http://opensource.org/licenses/MIT
+ * @version    1.0.0, 2015-01-23
+ * @author     Rene Korss <rene.korss@gmail.com>
  */
 
 ;(function ( $, window, document, undefined ) {
 
-		// Create the defaults once
-		var watchMe = "watchMe",
-				defaults = {
-					// Image default state
-					defaultState	: 'straight',
-					
-					// Speed of fade in ms
-					fadeSpeed		: 200,
-					
-					// Timeout before fade in ms
-					timeout 		: 300,
-					
-					// Image elements
-					imageSelector	: "img",
-					
-					// Do we want hover to be different image?
-					hoverImg		: false,
+    // Create the defaults once
+    var watchMe = "watchMe",
+        defaults = {
+            // Image default state
+            defaultState    : 'straight',
 
-					// Do we want to add direction classes to images?
-					addClasses 		: false,
-		};
+            // Speed of fade in ms
+            fadeSpeed       : 200,
 
-		// Plugin constructor
-		function Plugin ( element, options ) {
-				this.element    = element;
-				this.settings   = $.extend( {}, defaults, options );
-				this._defaults  = defaults;
-				this._name      = watchMe;
-				this.images     = $(this.element).find(this.settings.imageSelector);
-				this.directions = [this.settings.defaultState, this.settings.defaultState+'hover', 'up', 'upright', 'right', 'downright', 'down', 'downleft', 'left', 'upleft'];
-				this.init();
-		}
+            // Timeout before fade in ms
+            timeout         : 300,
 
-		// Avoid Plugin.prototype conflicts
-		$.extend(Plugin.prototype, {
-			init: function () {
-				// This changes
-				var self = this;
+            // Image elements
+            imageSelector   : "img",
 
-				// Init
-				var fadeTimeout;
+            // Do we want hover to be different image?
+            hoverImg        : false,
 
-				// Preload images
-				self._preloadImages();
+            // Do we want to add direction classes to images?
+            addClasses      : false,
+    };
 
-				// Add class
-				if(self.settings.addClasses)
-					self.images.addClass('watchMe');
+    // Plugin constructor
+    function Plugin ( element, options ) {
+        this.element    = element;
 
-				// On img hover
-				self.images.hover(function(e){
-					self.evt = e;
-					self.hoverOffset = $(this).offset();
-					self.hoverEl     = $(this);
+        this.settings   = $.extend( {}, defaults, options );
 
-					// Check if timeout is set, clear it
-					if(fadeTimeout)
-						clearTimeout(fadeTimeout);  
+        if ('defaultState' in options) {
+            this.settings.defaultState = options.defaultState;
+        }
+        else if ('defaultState' in this.element.data()) {
+            this.settings.defaultState = this.element.data('defaultState');
+        }
 
-					// Check if we are not working
-					if(!self.working)
-					{
-						// Set timeout, so we wont call it too often
-						fadeTimeout = setTimeout(function(){
-							// Update images directions
-							self.updateDirections();
-						}, self.settings.timeout);
-					}
-				},
-				function(e){
-					// Check if timeout is set, clear it
-					if(fadeTimeout)
-						clearTimeout(fadeTimeout); 
+        this._defaults  = defaults;
+        this._name      = watchMe;
+        this.images     = $(this.element).find(this.settings.imageSelector);
+        this.directions = [this.settings.defaultState, this.settings.defaultState+'hover', 'up', 'upright', 'right', 'downright', 'down', 'downleft', 'left', 'upleft'];
+        this.init();
+    }
 
-					// Check if we are not working
-					if(!self.working)
-					{
-						// Set timeout, so we wont call it too often
-						fadeTimeout = setTimeout(function(){
-							// Reset images
-							self.reset();
-						}, self.settings.timeout);
-					}
-				}); 
-			},
-			// Function to update directions
-			updateDirections: function()
-			{
-				// This changes
-				var self = this;
+    // Avoid Plugin.prototype conflicts
+    $.extend(Plugin.prototype, {
+        init: function () {
+            // This changes
+            var self = this;
 
-				// Init variables
-				var offset;
+            // Init
+            var fadeTimeout;
 
-				self.images.each(function(e){
-			        // Get element offset
-			        offset = $(this).offset();    
+            // Preload images
+            self._preloadImages();
 
-		            // Detect if is in same column, row
-		            sameColumn    = (self.hoverOffset.left == offset.left);
-		            sameRow       = (self.hoverOffset.top == offset.top);
-		            direction     = '';
+            // Add class
+            if(self.settings.addClasses){
+                self.images.addClass('watchMe');
+            }
 
-		            // Get our new direction
-		            if(sameRow)
-		            {
-		                direction+= '';
-		            }
-		            else if(self.evt.pageY >= offset.top)
-		            {
-		                direction+= 'down';
-		            }
-		            else
-		            {
-		                direction+= 'up';
-		            }
+            // On img hover
+            self.images.hover(function(e){
+                self.evt = e;
+                self.hoverOffset = $(this).offset();
+                self.hoverEl     = $(this);
 
-		            if(sameColumn)
-		            {
-		                direction+= '';
-		            }
-		            else if(self.evt.pageX >= offset.left)
-		            {
-		                direction+= 'right';
-		            }
-		            else
-		            {
-		                direction+= 'left';
-		            }
+                // Check if timeout is set, clear it
+                if(fadeTimeout){
+                    clearTimeout(fadeTimeout);
+                }
 
-		            // Detect if is this element
-		            if(self.settings.hoverImg && $(this).is(self.hoverEl))
-		            {
-		                direction+= self.settings.defaultState+'hover';
-		            }
-		            // If is this element, but hover effect not wanted
-		            else if($(this).is(self.hoverEl))
-		            {
-		                direction = self.settings.defaultState;
-		            }
-		            
-		            // Set image direction
-		            self.setDirection($(this), direction);
-		        });
-			},
-			// Function to update image direction
-			setDirection: function(imageElement, direction){
-				// This changes
-				var self = this;
+                // Check if we are not working
+                if(!self.working){
+                    // Set timeout, so we wont call it too often
+                    fadeTimeout = setTimeout(function(){
+                        // Update images directions
+                        self.updateDirections();
+                    }, self.settings.timeout);
+                }
+            },
+            function(e){
+                // Check if timeout is set, clear it
+                if(fadeTimeout){
+                    clearTimeout(fadeTimeout);
+                }
 
-				// Init variables
-				var ext, newSrc;
+                // Check if we are not working
+                if(!self.working){
+                    // Set timeout, so we wont call it too often
+                    fadeTimeout = setTimeout(function(){
+                        // Reset images
+                        self.reset();
+                    }, self.settings.timeout);
+                }
+            });
+        },
+        // Function to update directions
+        updateDirections: function()
+        {
+            // This changes
+            var self = this;
 
-				// Set that we are working
-				self.working = true;
+            // Init variables
+            var offset;
 
-		        // New img src url
-		        newSrc = imageElement.data('watchme-direction-'+direction);
+            self.images.each(function(e){
+                // Get element offset
+                offset = $(this).offset();
 
-		        if(typeof newSrc !== 'undefined')
-		        {
-					imageElement.stop().fadeOut(self.settings.fadeSpeed, function(){
-				        // If direction has changed
-				        if(imageElement.data("direction") !== direction)
-				        {
-				        	// Change classes
-				        	if(self.settings.addClasses)
-				        		imageElement.removeClass(function (index, css) {return (css.match (/(^|\s)watchMe-direction-\S+/g) || []).join(' ');}).addClass('watchMe-direction-'+direction)
+                // Detect if is in same column, row
+                sameColumn    = (self.hoverOffset.left == offset.left);
+                sameRow       = (self.hoverOffset.top == offset.top);
+                direction     = '';
 
-				            // Change image src and wait img to load
-				            imageElement.data("direction", direction).attr("src", newSrc).load(function(){
-				                // Fade in
-				                $(this).fadeIn(self.settings.fadeSpeed, function(){
-				                	self.working = false;
-				                });
-				            });
-				        }
-				        else
-				        {
-				            // Fade same img back in
-				            imageElement.fadeIn(self.settings.fadeSpeed, function(){
-				            	self.working = false;
-				            });
-				        }
-				     });
-				}
-				else
-				{
-					console.log('Couldn\'t find watchMe image src for direction: watchme-direction-'+direction);
-				}
-			},
-			// Reset images
-			reset: function () {
-				// This changes
-				var self = this;
+                // Get our new direction
+                if(sameRow){
+                    direction+= '';
+                }
+                else if(self.evt.pageY >= offset.top){
+                    direction+= 'down';
+                }
+                else{
+                    direction+= 'up';
+                }
 
-				self.images.each(function(){
-					self.setDirection($(this), self.settings.defaultState);
-				});
-			},
-			// Preload images with CSS
-			_preloadImages: function(){
-				// This changes
-				var self = this;
-				var images = new Array();
+                if(sameColumn){
+                    direction+= '';
+                }
+                else if(self.evt.pageX >= offset.left){
+                    direction+= 'right';
+                }
+                else{
+                    direction+= 'left';
+                }
 
-				self.images.each(function(){
-					img = $(this);
-					$.each(self.directions, function(key, value){
-						url = img.data('watchme-direction-'+value);
-						if(typeof url !== 'undefined')
-						{
-							$('<img/>')[0].src = url;
-						}
-					});
-				});
-			}
-		});
+                // Detect if is this element
+                if(self.settings.hoverImg && $(this).is(self.hoverEl)){
+                    direction+= self.settings.defaultState+'hover';
+                }
+                // If is this element, but hover effect not wanted
+                else if($(this).is(self.hoverEl)){
+                    direction = self.settings.defaultState;
+                }
 
-		// A really lightweight plugin wrapper around the constructor,
-		// preventing against multiple instantiations
-		$.fn[ watchMe ] = function ( options ) {
-			this.each(function() {
-				if ( !$.data( this, "plugin_" + watchMe ) ) {
-					$.data( this, "plugin_" + watchMe, new Plugin( this, options ) );
-				}
-			});
+                // Set image direction
+                self.setDirection($(this), direction);
+            });
+        },
+        // Function to update image direction
+        setDirection: function(imageElement, direction){
+            // This changes
+            var self = this;
 
-			// chain jQuery functions
-			return this;
-		};
+            // Init variables
+            var ext, newSrc;
+
+            // Set that we are working
+            self.working = true;
+
+            // New img src url
+            newSrc = imageElement.data('watchme-direction-'+direction);
+
+            if(typeof newSrc !== 'undefined'){
+                imageElement.stop().fadeOut(self.settings.fadeSpeed, function(){
+                    // If direction has changed
+                    if(imageElement.data("direction") !== direction)
+                    {
+                        // Change classes
+                        if(self.settings.addClasses)
+                            imageElement.removeClass(function (index, css) {return (css.match (/(^|\s)watchMe-direction-\S+/g) || []).join(' ');}).addClass('watchMe-direction-'+direction)
+
+                        // Change image src and wait img to load
+                        imageElement.data("direction", direction).attr("src", newSrc).load(function(){
+                            // Fade in
+                            $(this).fadeIn(self.settings.fadeSpeed, function(){
+                                self.working = false;
+                            });
+                        });
+                    }
+                    else
+                    {
+                        // Fade same img back in
+                        imageElement.fadeIn(self.settings.fadeSpeed, function(){
+                            self.working = false;
+                        });
+                    }
+                 });
+            }
+            else{
+                console.log('Couldn\'t find watchMe image src for direction: watchme-direction-'+direction);
+            }
+        },
+        // Reset images
+        reset: function () {
+            // This changes
+            var self = this;
+
+            self.images.each(function(){
+                self.setDirection($(this), self.settings.defaultState);
+            });
+        },
+        // Preload images with CSS
+        _preloadImages: function(){
+            // This changes
+            var self = this;
+            var images = new Array();
+
+            self.images.each(function(){
+                img = $(this);
+                $.each(self.directions, function(key, value){
+                    url = img.data('watchme-direction-'+value);
+                    if(typeof url !== 'undefined'){
+                        $('<img/>')[0].src = url;
+                    }
+                });
+            });
+        }
+    });
+
+    // A really lightweight plugin wrapper around the constructor,
+    // preventing against multiple instantiations
+    $.fn[ watchMe ] = function ( options ) {
+        this.each(function() {
+            if ( !$.data( this, "plugin_" + watchMe ) ) {
+                $.data( this, "plugin_" + watchMe, new Plugin( this, options ) );
+            }
+        });
+
+        // chain jQuery functions
+        return this;
+    };
 
 })( jQuery, window, document );
