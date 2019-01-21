@@ -67,5 +67,5 @@ module.exports = function(grunt) {
     });
 
     // Default taks
-    grunt.registerTask('default', ['clean', 'copy', 'uglify']);
+    grunt.registerTask('default', ['clean', 'jshint', 'copy', 'uglify']);
 };
