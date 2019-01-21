@@ -1,6 +1,6 @@
 {
   "name": "jquery-watchme",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A jQuery plugin to manipulate image sources depending on hovered image position",
   "main": "dist/jQuery.watchMe.min.js",
   "scripts": {
