@@ -13,22 +13,22 @@
     var watchMe = "watchMe",
         defaults = {
             // Image default state
-            defaultState    : 'straight',
+            defaultState: 'straight',
 
             // Speed of fade in ms
-            fadeSpeed       : 200,
+            fadeSpeed: 200,
 
             // Timeout before fade in ms
-            timeout         : 300,
+            timeout: 300,
 
             // Image elements
-            imageSelector   : "img",
+            imageSelector: "img",
 
             // Do we want hover to be different image?
-            hoverImg        : false,
+            hoverImg: false,
 
             // Do we want to add direction classes to images?
-            addClasses      : false,
+            addClasses: false,
     };
 
     // Plugin constructor
