@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>jQuery watchMe</title>
+    <meta name="description" content="jQuery watchMe test">
+    <meta name="author" content="Rene Korss">
+    <style>
+    #watchMe{
+        max-width: 900px;
+    }
+
+    .imgWrapper 
+    {
+        height: 150px;
+        width: 150px;
+        float: left;
+        padding: 5px;
+    }
+
+    /*
+    * Different directions can be styled (needs addClasses option to be true)
+    * 
+    * every image has "watchMe" class
+    * class pattern: watchMe-direction-[direction]
+    * see example below
+    */
+
+    img.watchMe.watchMe-direction-up
+    {
+        opacity: 0.5;
+    }
+
+    /* IE adds border */
+    img.watchMe
+    {
+        border: 0; 
+    }
+    </style>
+</head>
+<body>
+    <div id="watchMe">
+        <div class="imgWrapper"> 
+            <a href="#">
+                <img src="https://placehold.it/150x150&text=straight" width="150" height="150"
+                    data-watchme-direction-straight="https://placehold.it/150x150&text=straight"
+                    data-watchme-direction-straighthover="https://placehold.it/150x150&text=straight hover"
+                    data-watchme-direction-up="https://placehold.it/150x150&text=up"
+                    data-watchme-direction-upright="https://placehold.it/150x150&text=upright"
+                    data-watchme-direction-right="https://placehold.it/150x150&text=right"
+                    data-watchme-direction-downright="https://placehold.it/150x150&text=downright"
+                    data-watchme-direction-down="https://placehold.it/150x150&text=down"
+                    data-watchme-direction-downleft="https://placehold.it/150x150&text=downleft"
+                    data-watchme-direction-left="https://placehold.it/150x150&text=left"
+                    data-watchme-direction-upleft="https://placehold.it/150x150&text=upleft"
+                    />
+            </a>
+        </div>
+        <div class="imgWrapper">
+            <a href="#">
+                <img src="https://placehold.it/150x150&text=straight" width="150" height="150"
+                    data-watchme-direction-straight="https://placehold.it/150x150&text=straight"
+                    data-watchme-direction-straighthover="https://placehold.it/150x150&text=straight hover"
+                    data-watchme-direction-up="https://placehold.it/150x150&text=up"
+                    data-watchme-direction-upright="https://placehold.it/150x150&text=upright"
+                    data-watchme-direction-right="https://placehold.it/150x150&text=right"
+                    data-watchme-direction-downright="https://placehold.it/150x150&text=downright"
+                    data-watchme-direction-down="https://placehold.it/150x150&text=down"
+                    data-watchme-direction-downleft="https://placehold.it/150x150&text=downleft"
+                    data-watchme-direction-left="https://placehold.it/150x150&text=left"
+                    data-watchme-direction-upleft="https://placehold.it/150x150&text=upleft"
+                    />
+            </a>
+        </div>
+        <div class="imgWrapper"> 
+            <a href="#">
+                <img src="https://placehold.it/150x150&text=straight" width="150" height="150"
+                    data-watchme-direction-straight="https://placehold.it/150x150&text=straight"
+                    data-watchme-direction-straighthover="https://placehold.it/150x150&text=straight hover"
+                    data-watchme-direction-up="https://placehold.it/150x150&text=up"
+                    data-watchme-direction-upright="https://placehold.it/150x150&text=upright"
+                    data-watchme-direction-right="https://placehold.it/150x150&text=right"
+                    data-watchme-direction-downright="https://placehold.it/150x150&text=downright"
+                    data-watchme-direction-down="https://placehold.it/150x150&text=down"
+                    data-watchme-direction-downleft="https://placehold.it/150x150&text=downleft"
+                    data-watchme-direction-left="https://placehold.it/150x150&text=left"
+                    data-watchme-direction-upleft="https://placehold.it/150x150&text=upleft"
+                    />
+            </a>
+        </div>
+        <div class="imgWrapper"> 
+            <a href="#">
+                <img src="https://placehold.it/150x150&text=straight" width="150" height="150"
+                    data-watchme-direction-straight="https://placehold.it/150x150&text=straight"
+                    data-watchme-direction-straighthover="https://placehold.it/150x150&text=straight hover"
+                    data-watchme-direction-up="https://placehold.it/150x150&text=up"
+                    data-watchme-direction-upright="https://placehold.it/150x150&text=upright"
+                    data-watchme-direction-right="https://placehold.it/150x150&text=right"
+                    data-watchme-direction-downright="https://placehold.it/150x150&text=downright"
+                    data-watchme-direction-down="https://placehold.it/150x150&text=down"
+                    data-watchme-direction-downleft="https://placehold.it/150x150&text=downleft"
+                    data-watchme-direction-left="https://placehold.it/150x150&text=left"
+                    data-watchme-direction-upleft="https://placehold.it/150x150&text=upleft"
+                    />
+            </a>
+        </div>
+        <div class="imgWrapper"> 
+            <a href="#">
+                <img src="https://placehold.it/150x150&text=straight" width="150" height="150"
+                    data-watchme-direction-straight="https://placehold.it/150x150&text=straight"
+                    data-watchme-direction-straighthover="https://placehold.it/150x150&text=straight hover"
+                    data-watchme-direction-up="https://placehold.it/150x150&text=up"
+                    data-watchme-direction-upright="https://placehold.it/150x150&text=upright"
+                    data-watchme-direction-right="https://placehold.it/150x150&text=right"
+                    data-watchme-direction-downright="https://placehold.it/150x150&text=downright"
+                    data-watchme-direction-down="https://placehold.it/150x150&text=down"
+                    data-watchme-direction-downleft="https://placehold.it/150x150&text=downleft"
+                    data-watchme-direction-left="https://placehold.it/150x150&text=left"
+                    data-watchme-direction-upleft="https://placehold.it/150x150&text=upleft"
+                    />
+            </a>
+        </div>
+        <div class="imgWrapper"> 
+            <a href="#">
+                <img src="https://placehold.it/150x150&text=straight" width="150" height="150"
+                    data-watchme-direction-straight="https://placehold.it/150x150&text=straight"
+                    data-watchme-direction-straighthover="https://placehold.it/150x150&text=straight hover"
+                    data-watchme-direction-up="https://placehold.it/150x150&text=up"
+                    data-watchme-direction-upright="https://placehold.it/150x150&text=upright"
+                    data-watchme-direction-right="https://placehold.it/150x150&text=right"
+                    data-watchme-direction-downright="https://placehold.it/150x150&text=downright"
+                    data-watchme-direction-down="https://placehold.it/150x150&text=down"
+                    data-watchme-direction-downleft="https://placehold.it/150x150&text=downleft"
+                    data-watchme-direction-left="https://placehold.it/150x150&text=left"
+                    data-watchme-direction-upleft="https://placehold.it/150x150&text=upleft"
+                    />
+            </a>
+        </div>
+        <div class="imgWrapper"> 
+            <a href="#">
+                <img src="https://placehold.it/150x150&text=straight" width="150" height="150"
+                    data-watchme-direction-straight="https://placehold.it/150x150&text=straight"
+                    data-watchme-direction-straighthover="https://placehold.it/150x150&text=straight hover"
+                    data-watchme-direction-up="https://placehold.it/150x150&text=up"
+                    data-watchme-direction-upright="https://placehold.it/150x150&text=upright"
+                    data-watchme-direction-right="https://placehold.it/150x150&text=right"
+                    data-watchme-direction-downright="https://placehold.it/150x150&text=downright"
+                    data-watchme-direction-down="https://placehold.it/150x150&text=down"
+                    data-watchme-direction-downleft="https://placehold.it/150x150&text=downleft"
+                    data-watchme-direction-left="https://placehold.it/150x150&text=left"
+                    data-watchme-direction-upleft="https://placehold.it/150x150&text=upleft"
+                    />
+            </a>
+        </div>
+        <div class="imgWrapper"> 
+            <a href="#">
+                <img src="https://placehold.it/150x150&text=straight" width="150" height="150"
+                    data-watchme-direction-straight="https://placehold.it/150x150&text=straight"
+                    data-watchme-direction-straighthover="https://placehold.it/150x150&text=straight hover"
+                    data-watchme-direction-up="https://placehold.it/150x150&text=up"
+                    data-watchme-direction-upright="https://placehold.it/150x150&text=upright"
+                    data-watchme-direction-right="https://placehold.it/150x150&text=right"
+                    data-watchme-direction-downright="https://placehold.it/150x150&text=downright"
+                    data-watchme-direction-down="https://placehold.it/150x150&text=down"
+                    data-watchme-direction-downleft="https://placehold.it/150x150&text=downleft"
+                    data-watchme-direction-left="https://placehold.it/150x150&text=left"
+                    data-watchme-direction-upleft="https://placehold.it/150x150&text=upleft"
+                    />
+            </a>
+        </div>
+        <div class="imgWrapper"> 
+            <a href="#">
+                <img src="https://placehold.it/150x150&text=straight" width="150" height="150"
+                    data-watchme-direction-straight="https://placehold.it/150x150&text=straight"
+                    data-watchme-direction-straighthover="https://placehold.it/150x150&text=straight hover"
+                    data-watchme-direction-up="https://placehold.it/150x150&text=up"
+                    data-watchme-direction-upright="https://placehold.it/150x150&text=upright"
+                    data-watchme-direction-right="https://placehold.it/150x150&text=right"
+                    data-watchme-direction-downright="https://placehold.it/150x150&text=downright"
+                    data-watchme-direction-down="https://placehold.it/150x150&text=down"
+                    data-watchme-direction-downleft="https://placehold.it/150x150&text=downleft"
+                    data-watchme-direction-left="https://placehold.it/150x150&text=left"
+                    data-watchme-direction-upleft="https://placehold.it/150x150&text=upleft"
+                    />
+            </a>
+        </div>
+        <div class="imgWrapper"> 
+            <a href="#">
+                <img src="https://placehold.it/150x150&text=straight" width="150" height="150"
+                    data-watchme-direction-straight="https://placehold.it/150x150&text=straight"
+                    data-watchme-direction-straighthover="https://placehold.it/150x150&text=straight hover"
+                    data-watchme-direction-up="https://placehold.it/150x150&text=up"
+                    data-watchme-direction-upright="https://placehold.it/150x150&text=upright"
+                    data-watchme-direction-right="https://placehold.it/150x150&text=right"
+                    data-watchme-direction-downright="https://placehold.it/150x150&text=downright"
+                    data-watchme-direction-down="https://placehold.it/150x150&text=down"
+                    data-watchme-direction-downleft="https://placehold.it/150x150&text=downleft"
+                    data-watchme-direction-left="https://placehold.it/150x150&text=left"
+                    data-watchme-direction-upleft="https://placehold.it/150x150&text=upleft"
+                    />
+            </a>
+        </div>
+        <div class="imgWrapper"> 
+            <a href="#">
+                <img src="https://placehold.it/150x150&text=straight" width="150" height="150"
+                    data-watchme-direction-straight="https://placehold.it/150x150&text=straight"
+                    data-watchme-direction-straighthover="https://placehold.it/150x150&text=straight hover"
+                    data-watchme-direction-up="https://placehold.it/150x150&text=up"
+                    data-watchme-direction-upright="https://placehold.it/150x150&text=upright"
+                    data-watchme-direction-right="https://placehold.it/150x150&text=right"
+                    data-watchme-direction-downright="https://placehold.it/150x150&text=downright"
+                    data-watchme-direction-down="https://placehold.it/150x150&text=down"
+                    data-watchme-direction-downleft="https://placehold.it/150x150&text=downleft"
+                    data-watchme-direction-left="https://placehold.it/150x150&text=left"
+                    data-watchme-direction-upleft="https://placehold.it/150x150&text=upleft"
+                    />
+            </a>
+        </div>
+        <div class="imgWrapper"> 
+            <a href="#">
+                <img src="https://placehold.it/150x150&text=straight" width="150" height="150"
+                    data-watchme-direction-straight="https://placehold.it/150x150&text=straight"
+                    data-watchme-direction-straighthover="https://placehold.it/150x150&text=straight hover"
+                    data-watchme-direction-up="https://placehold.it/150x150&text=up"
+                    data-watchme-direction-upright="https://placehold.it/150x150&text=upright"
+                    data-watchme-direction-right="https://placehold.it/150x150&text=right"
+                    data-watchme-direction-downright="https://placehold.it/150x150&text=downright"
+                    data-watchme-direction-down="https://placehold.it/150x150&text=down"
+                    data-watchme-direction-downleft="https://placehold.it/150x150&text=downleft"
+                    data-watchme-direction-left="https://placehold.it/150x150&text=left"
+                    data-watchme-direction-upleft="https://placehold.it/150x150&text=upleft"
+                    />
+            </a>
+        </div>
+        <div class="imgWrapper"> 
+            <a href="#">
+                <img src="https://placehold.it/150x150&text=straight" width="150" height="150"
+                    data-watchme-direction-straight="https://placehold.it/150x150&text=straight"
+                    data-watchme-direction-straighthover="https://placehold.it/150x150&text=straight hover"
+                    data-watchme-direction-up="https://placehold.it/150x150&text=up"
+                    data-watchme-direction-upright="https://placehold.it/150x150&text=upright"
+                    data-watchme-direction-right="https://placehold.it/150x150&text=right"
+                    data-watchme-direction-downright="https://placehold.it/150x150&text=downright"
+                    data-watchme-direction-down="https://placehold.it/150x150&text=down"
+                    data-watchme-direction-downleft="https://placehold.it/150x150&text=downleft"
+                    data-watchme-direction-left="https://placehold.it/150x150&text=left"
+                    data-watchme-direction-upleft="https://placehold.it/150x150&text=upleft"
+                    />
+            </a>
+        </div>
+        <div class="imgWrapper"> 
+            <a href="#">
+                <img src="https://placehold.it/150x150&text=straight" width="150" height="150"
+                    data-watchme-direction-straight="https://placehold.it/150x150&text=straight"
+                    data-watchme-direction-straighthover="https://placehold.it/150x150&text=straight hover"
+                    data-watchme-direction-up="https://placehold.it/150x150&text=up"
+                    data-watchme-direction-upright="https://placehold.it/150x150&text=upright"
+                    data-watchme-direction-right="https://placehold.it/150x150&text=right"
+                    data-watchme-direction-downright="https://placehold.it/150x150&text=downright"
+                    data-watchme-direction-down="https://placehold.it/150x150&text=down"
+                    data-watchme-direction-downleft="https://placehold.it/150x150&text=downleft"
+                    data-watchme-direction-left="https://placehold.it/150x150&text=left"
+                    data-watchme-direction-upleft="https://placehold.it/150x150&text=upleft"
+                    />
+            </a>
+        </div>
+        <div class="imgWrapper"> 
+            <a href="#">
+                <img src="https://placehold.it/150x150&text=straight" width="150" height="150"
+                    data-watchme-direction-straight="https://placehold.it/150x150&text=straight"
+                    data-watchme-direction-straighthover="https://placehold.it/150x150&text=straight hover"
+                    data-watchme-direction-up="https://placehold.it/150x150&text=up"
+                    data-watchme-direction-upright="https://placehold.it/150x150&text=upright"
+                    data-watchme-direction-right="https://placehold.it/150x150&text=right"
+                    data-watchme-direction-downright="https://placehold.it/150x150&text=downright"
+                    data-watchme-direction-down="https://placehold.it/150x150&text=down"
+                    data-watchme-direction-downleft="https://placehold.it/150x150&text=downleft"
+                    data-watchme-direction-left="https://placehold.it/150x150&text=left"
+                    data-watchme-direction-upleft="https://placehold.it/150x150&text=upleft"
+                    />
+            </a>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+    <script src="../dist/jQuery.watchMe.min.js"></script>
+    <script>
+    // DOM ready
+    $(function () {
+        /*
+        * Note: watchMe preloads all images
+        */
+        
+        $('#watchMe').watchMe({
+            // Image default state
+            defaultState: 'straight',
+            
+            // Speed of fade in ms
+            fadeSpeed: 200,
+            
+            // Timeout before fade in ms
+            timeout: 300,
+            
+            // Image elements
+            imageSelector: "img",
+            
+            // Do we want hover to be different image?
+            hoverImg: true,
+            
+            // Do we want to add direction classes to images?
+            addClasses: true,
+        });
+    });
+    </script>
+</body>
+</html>
