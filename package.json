@@ -1,0 +1,39 @@
+{
+  "name": "jquery-watchme",
+  "version": "1.0.0",
+  "description": "A jQuery plugin to manipulate image sources depending on hovered image position",
+  "main": "dist/jQuery.watchMe.min.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/renekorss/jquery-watchme.git"
+  },
+  "keywords": [
+    "jquery",
+    "images",
+    "image",
+    "source",
+    "manipulation",
+    "hover",
+    "state",
+    "image",
+    "hover"
+  ],
+  "author": "Rene Korss <rene.korss@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/renekorss/jquery-watchme/issues"
+  },
+  "homepage": "https://github.com/renekorss/jquery-watchme#readme",
+  "devDependencies": {
+    "grunt": "^1.0.3",
+    "grunt-contrib-clean": "^2.0.0",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-jshint": "^2.0.0",
+    "grunt-contrib-uglify": "^4.0.0",
+    "grunt-contrib-watch": "^1.1.0",
+    "load-grunt-tasks": "^4.0.0"
+  }
+}
