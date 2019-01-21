@@ -180,7 +180,7 @@
                             imageElement.removeClass(function (index, css) {return (css.match (/(^|\s)watchMe-direction-\S+/g) || []).join(' ');}).addClass('watchMe-direction-'+direction)
 
                         // Change image src and wait img to load
-                        imageElement.data("direction", direction).attr("src", newSrc).load(function(){
+                        imageElement.data("direction", direction).attr("src", newSrc).on('load', function(){
                             // Fade in
                             $(this).fadeIn(self.settings.fadeSpeed, function(){
                                 self.working = false;
