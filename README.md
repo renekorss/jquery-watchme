@@ -1,5 +1,6 @@
 [![npm version](https://badge.fury.io/js/jquery-watchme.svg)](https://badge.fury.io/js/jquery-watchme)
 [![npm](https://img.shields.io/npm/dt/jquery-watchme.svg)](https://www.npmjs.com/package/jquery-watchme)
+[![Known Vulnerabilities](https://snyk.io/test/github/renekorss/jquery-watchme/badge.svg?targetFile=package.json)](https://snyk.io/test/github/renekorss/jquery-watchme?targetFile=package.json)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 # jQuery watchMe
